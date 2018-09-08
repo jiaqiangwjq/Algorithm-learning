@@ -15,7 +15,7 @@ struct bign	//big number
 	}
 };
 
-bign change(char str[])	//使得地位在前，高位在后
+bign change(char str[])	//使得低位在前，高位在后
 {
 	bign a;
 	a.len = strlen(str);
