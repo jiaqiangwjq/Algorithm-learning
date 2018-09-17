@@ -20,28 +20,44 @@ bool cmp(Student a, Student b)
 
 int main()
 {
-	int n, k, num = 0;
-	scanf("%d", &n);
+	int n, k, num = 0;	//num 为总考生数
+
+	scanf("%d", &n);	// n 为考场数
 	for (int i = 1; i <= n; i++)
 	{
-		scanf("%d", &k);
+		scanf("%d", &k);	//该考场内人数 
+
 		for (int j = 1; j <= k; j++)
 		{
 			scanf("%s %d", stu[num].id, &stu[num].score);
-			stu[num].location_number = i;
+
+			stu[num].location_number = i;	//考生号为 i
 			num++;
 		}
 		sort(stu + num - k, stu + num, cmp);
-		stu[num - k].local_rank = 1;
-		for (int j = num - k + 1; j < num; j++)
+
+		stu[num - k].local_rank = 1;	//将该考场的第一名 local_rank = 1
+
+		for (int j = num - k + 1; j < num; j++)	//对该考场剩下的考生排名
 		{
 			if (stu[j].score == stu[j - 1].score)
 				stu[j].local_rank = stu[j - 1].local_rank;
 			else
-				stu[j].local_rank = j + 1 - (num - k);
+				stu[j].local_rank = j + 1 - (num - k);	//排名为该考生前面的人数
 		}
 	}
 	printf("%d\n", num);
-	sort(stu, stu + num, cmp);
-	int r = 1
+	sort(stu, stu + num, cmp);	//对总考生进行排名
+
+	int r = 1;	//当前考生的排名
+
+	for (int i = 0; i < num; i++)
+	{
+		if (i > 0 && stu[i].score != stu[i - 1].score)
+			r = i + 1;	//当前考生与上一个考生的分数不同时，让 r 更新为人数加 1
+
+		printf("%s ", stu[i].id);
+		printf("%d %d %d\n", r, stu[i].location_number, stu[i].local_rank);
+	}
+	return 0;
 }
