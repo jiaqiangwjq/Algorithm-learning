@@ -29,7 +29,7 @@ int hashFunc(char s[], int len)
         if(s[i] >= 'a' && s[i] <= 'z')
             id = id*62 + (s[i] - 'a') + 26;
         if(s[i] >= '0' && s[i] <= '9')
-            id = id*62 + (s[i] - '0') + 10;    
+            id = id*62 + (s[i] - '0') +  10;    
     }
     return id;
 }
