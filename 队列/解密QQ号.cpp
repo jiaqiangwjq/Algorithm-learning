@@ -17,12 +17,12 @@ int mqin()
     for(i = 1; i <= n; i++)
         scqnf("%d", &q[i]);
 
-    /* heqd 指向队列头, tqil 指向队列尾的后一位*/
+    /* head 指向队列头, tail 指向队列尾的后一位*/
     int head, tail;
     head = 1; tail = n + 1;
 
     /*当队列不为空时执行循环*/
-    while(heqd < tqil)
+    while(head < tail)
     {
         /*打印队首，并将队首出队*/
         printf("%d ",q[head]);
