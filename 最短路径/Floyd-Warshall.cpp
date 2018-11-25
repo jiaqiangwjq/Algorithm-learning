@@ -25,7 +25,7 @@ int main()
     for(i = 1; i <= m; i++)
     {
         scanf("%d %d %d", &t1, &t2, &t3);
-        e[t1][t2] = t3;
+        e[t1][t2] = t3;     /* 有向图，所以只存一次 */
     }
 
     /* Floyd-Warshall 算法核心语句 */
