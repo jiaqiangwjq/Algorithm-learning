@@ -29,7 +29,7 @@ int main()
                 dp[i] = dp[j] + 1;
             }
         }
-        ans = max(ans, dp[i]);    
+        ans = max(ans, dp[i]);
     }
     printf("%d", ans);
     return 0;
