@@ -1,5 +1,7 @@
 /*
-快速排序 QuickSort
+* 快速排序 QuickSort
+* 
+* 最后数组中的元素按照从小到大的顺序排列
 */
 
 #include<cstdio>
