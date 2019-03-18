@@ -1,2 +1,2 @@
 # Algorithm-learning
-From Zero To One!
+From Zero To One.
