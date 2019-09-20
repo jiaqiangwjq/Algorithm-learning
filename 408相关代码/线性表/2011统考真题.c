@@ -4,13 +4,15 @@
 * 它们所有元素的升序序列的中位数。例如，若 S2 = (2, 4, 6, 8, 20),则 S1 和 S2 的中位数是
 * 11。现在有两个等长升序序列 A 和 B，设计一个算法找出 A 和 B 的中位数。
 *
-* 思路： 分别求两个升序序列 A 和 B 的中位数 a 和 b。
+* 思路一： 分别求两个升序序列 A 和 B 的中位数 a 和 b。
 *       1. 若 a = b, 则 a 或 b 即为所求中位数;
 *       2. 若 a < b, 则舍弃 A 中较小的一半，舍弃 B 中较大的一半，要求舍弃的长度一致；
 *       3. 若 a > b, 则舍弃 A 中较大的一半，舍弃 B 中较小的一半，要求舍弃的长度一致；
 * 在保留的升序序列中重复上述过程，直到两个序列中均只含一个元素为止，较小者即为所求中位数。
+*
+* 思路二： 按照从小到大的顺序，同时读 A 和 B 中的数字，当顺序读到第 n 个数时，即为所求中位数。
 */
-int search(int A[], int B[], int n){
+int solutionOne(int A[], int B[], int n){
 	int left_A = 0, right_A = n-1;
 	int left_B = 0, right_B = n-1;
 	int middle_A, middle_B;
@@ -42,4 +44,24 @@ int search(int A[], int B[], int n){
 		}
 	}
 	return A[left_A] < B[left_B] ? A[left_A] : B[left_B];
+}
+
+
+int solutionTwo(int A[], int B[], int n){
+	int count = 1;
+	int i = 0, j = 0;
+	int result;
+	while(count <= n){
+		if(A[i] < B[j]){
+			result = A[i];
+			++i;
+			++count;
+		}
+		else{
+			result = B[j];
+			++j;
+			++count;
+		}
+	}
+	return result;
 }
