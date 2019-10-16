@@ -33,7 +33,7 @@ int solution(int A[], int n){
 			flag = 0;
 		else{
 			if(low < k-1){
-				low_1 = (++low);
+				low = (++low_1);
 				high = high_1;
 			}
 			else{
