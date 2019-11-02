@@ -140,3 +140,27 @@ BinTreeNode *creatBT(int preOrder[], int inOrder[], int left_pre, int right_pre,
 	root -> lchild = creatBT(preOrder, inOrder, left_pre+1, left_pre+(i-left_in), left_in, i-1);
 	root -> rchild = creatBT(preOrder, inOrder, left_pre+1, left_pre+(i-left_in), i+1, right_in);
 }
+
+
+/* 判断一棵树是否是平衡二叉树 */
+void judgeAVL(BinNode *root, int &balance, int &h){
+	int left_balance, right_balance, left_h, right_h;
+	BinNode *p;
+	if(root == NULL){		/* 空树，高度为 0 */
+		h = 0;
+		balance = 1;
+	}
+	else if(root->lchild == NULL && root->rchild == NULL){		/* 仅有根节点，高度为 1 */
+		h = 1;
+		balance = 1;
+	}
+	else{
+		judgeAVL(root->lchild, left_balance, left_h);
+		judgeAVL(root-rchild, right_balance, right_h);
+		h = (left_h > right_h) ? (left_h + 1 : right_h + 1);
+		if(abs(left_h - right_h) < 2)		/* 若高度之差符合平衡要求，则再看左右子树是否都平衡 */
+			balance = left_balance & right_balance;		/* & 在这里的作用就是：左右子树都平衡时，二叉树平衡 */
+		else
+			balance = 0;
+	}
+}
