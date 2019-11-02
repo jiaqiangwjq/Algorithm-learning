@@ -164,3 +164,25 @@ void judgeAVL(BinNode *root, int &balance, int &h){
 			balance = 0;
 	}
 }
+
+/* 判断一棵树是否是完全二叉树
+*
+* 思想: 让一棵树的所有结点都入队(包括 NULL), 在将入队的结点逐个弹出, 
+*         若队列中还有元素，但此时弹出结点中有 NULL, 由于 lchild 先入队，
+*         说明不是完全二叉树
+*/
+int judgeFullBintree(BinNode *root){
+	queue<int> q;
+	BinNode *p;
+	q.push(root);
+	while(p = q.pop()){
+		q.push(p->lchild);
+		q.push(r->rchild);
+	}
+	while(q.empty() != false){
+		p = q.pop();
+		if(p == NULL)
+			return 0;
+	}
+	return 1;
+}
