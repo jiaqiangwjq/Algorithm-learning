@@ -22,11 +22,11 @@ void QuickSort(int left, int right)
     while(i != j)
     {   
         //顺序很重要,要先从右往左找
-        while(a[j] >= temp)
+        while(a[j] >= temp && i < j)
             j--;
         
         //再从左往右找
-        while(a[i] <= temp)
+        while(a[i] <= temp && i < j)
             i++;
 
         //当哨兵 i 和哨兵 j 没有相遇时，交换两个数的位置
