@@ -21,7 +21,8 @@ void QuickSort(int left, int right)
     j = right;
     while(i != j)
     {   
-        //顺序很重要,要先从右往左找
+        //顺序很重要,要先从右往左找，保证最后与 temp 交换的值一定比它小
+		//如果先从左向右找，那么最后与 temp 交换的值就比 temp 大了
         while(a[j] >= temp && i < j)
             j--;
         
@@ -35,7 +36,7 @@ void QuickSort(int left, int right)
             t = a[i];
             a[i] = a[j];
             a[j] = t;
-        }    
+        }
     }
 
     //将基准数归位
