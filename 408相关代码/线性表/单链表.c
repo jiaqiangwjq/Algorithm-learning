@@ -99,19 +99,18 @@ int Locate(ElemType x){
 }
 
 /* 链表反转 */
+/* 用指针 p 扫描原单链表，先将头节点的 next 域设置为 NULL，然后将 p 节点采用头插法进行插入 */
+
 void Reverse(){
-	ListNode *p1 = head -> next -> next;
-	ListNode *p2 = NULL;
-	head -> next -> next = NULL;	/* 新链表的尾结点 */
-	while(p1 -> next != NULL){
-		p2 = p1 -> next;
-		p1 -> next = head -> next;
-		head - > next = p1;
-		p1 = p2;
-		p2 = p1 -> next;
+	ListNode *p = head -> next, *q;
+	head -> next = NULL;
+	
+	while(p != NULL){
+		q = p -> next;
+		p -> next = head -> next;
+		head -> next = p;
+		p = q;
 	}
-	p1 -> next = head -> next;
-	head -> next = p1;
 }
 
 /* 计算链表长度 */
