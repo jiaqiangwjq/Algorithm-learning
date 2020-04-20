@@ -5,12 +5,17 @@
 */
 
 #include<cstdio>
+#include<algorithm>
+using namespace std;
 
 int a[101], n;  //定义两个全局变量，需要在子函数中使用它们
 
 void QuickSort(int left, int right)
 {
     int i, j, t, temp;
+	
+	if(left > right)
+		return;
 
     //temp 中存放的就是基准数    
     temp = a[left];
@@ -26,17 +31,19 @@ void QuickSort(int left, int right)
 		 */
         while(a[j] >= temp && i < j)
             j--;
-		a[left] = a[right];
         
         //再从左往右找
         while(a[i] <= temp && i < j)
             i++;
-		a[right] = a[left];
+		
+		if(i < j)
+			swap(a[i], a[j]);
        
     }
 
     //将基准数归位
-    a[left] = temp;
+    a[left] = a[i];
+	a[i] = temp;
 
     QuickSort(left, i-1);   //递归处理 左 半部分
     QuickSort(i+1, right);  //递归处理 右 半部分
@@ -44,10 +51,12 @@ void QuickSort(int left, int right)
 
 int main()
 {
-    int i, t;
+    int i;
     scanf("%d",&n);
+	
     for(i = 1; i <= n; i++)
         scanf("%d",&a[i]);
+	
     QuickSort(1, n);
 
     //输出排序后的结果
