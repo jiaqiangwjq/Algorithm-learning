@@ -2,6 +2,8 @@ int binarySearch(int A[], int left, int right, int x) {
 	int mid;
 	
 	while(left <= right) {
+		
+		// mid = left + (right - left)/ 2  防止溢出
 		mid = (left + right) / 2;
 		if(A[mid] == x) {
 			return mid;
