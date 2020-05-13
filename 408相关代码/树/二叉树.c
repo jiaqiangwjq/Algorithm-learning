@@ -77,7 +77,7 @@ int theSharedAncestor(int tree[], int i, int j){
 		if(p < q)
 			q /= 2;		/* q 向上走 */
 	}
-	return tree[data];
+	return tree[p];
 }
 
 /* 计算一棵给定二叉树的结点数 */
@@ -167,7 +167,7 @@ void judgeAVL(BinNode *root, int &balance, int &h){
 
 /* 判断一棵树是否是完全二叉树
 *
-* 思想: 让一棵树的所有结点都入队(包括 NULL), 在将入队的结点逐个弹出, 
+* 思想: 让一棵树的所有结点都入队(包括 NULL), 再将入队的结点逐个弹出, 
 *         若队列中还有元素，但此时弹出结点中有 NULL, 由于 lchild 先入队，
 *         说明不是完全二叉树
 */
