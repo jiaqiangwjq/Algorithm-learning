@@ -12,7 +12,7 @@ int a[101], n;  //定义两个全局变量，需要在子函数中使用它们
 
 void QuickSort(int left, int right)
 {
-    int i, j, t, temp;
+    int i, j, temp;
 	
 	if(left > right)
 		return;
@@ -29,15 +29,12 @@ void QuickSort(int left, int right)
 		 * 顺序很重要,要先从右往左找，保证最后与 temp 交换的值一定比它小
 		 * 如果先从左向右找，那么最后与 temp 交换的值就比 temp 大了
 		 */
-        while(a[j] >= temp && i < j)
-            j--;
+        while(a[j] >= temp && i < j) --j;
         
         //再从左往右找
-        while(a[i] <= temp && i < j)
-            i++;
+        while(a[i] <= temp && i < j) ++i;
 		
-		if(i < j)
-			swap(a[i], a[j]);
+		if(i < j) swap(a[i], a[j]);
        
     }
 
@@ -64,5 +61,4 @@ int main()
         printf("%d ",a[i]);
 
     return 0;
-
 }
